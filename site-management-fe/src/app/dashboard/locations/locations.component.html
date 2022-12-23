@@ -1,0 +1,56 @@
+
+<ion-header>
+  <!-- Just an image -->
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img  src="../../../assets/logo.png" class="rounded" width="45px" alt="..."> Construction 
+  </a>
+</nav>
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-title style="padding-top: 10px;">
+            SITES
+          </ion-title></ion-col>
+        <ion-col size="auto">
+          <div style="width: 150px"><ion-button (click)="openAddSiteLocation()" expand="full">Add</ion-button></div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-title>
+
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">
+        Inbox
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ul class="list-group list-group-light mb-4">
+    <li [routerLink]="[site.Token]" style="cursor: pointer;" *ngFor="let site of sites"
+      class="list-group-item d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center">
+        <div class="rounded-circle bg-secondary bg-gradient p-2 text-white">{{ site.Name | uppercase | slice:0:1 }}
+        </div>
+
+        <div class="ms-3">
+          <p class="fw-bold mb-1"> {{ site.Name }}</p>
+          <p class="text-muted mb-0">{{ site.City }}</p>
+  
+
+        </div>
+
+      </div>
+    </li>
+  </ul>
+</ion-content>

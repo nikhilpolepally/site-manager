@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button class="btn  btn-danger" (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-title class="text-center">ADD NEW SITE</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()" class="btn btn-primary" [strong]="true">create</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-content class="ion-padding">
+    {{uuid}}
+    <form [formGroup]="addLocationForm">
+      <div class="mb-3">
+        <ion-item fill="outline">
+          <ion-label position="floating">Site Name</ion-label>
+          <ion-input formControlName="locationName" placeholder="Enter Site Name"></ion-input>
+        </ion-item>
+      </div>
+      <div class="mb-3">
+
+        <ion-item fill="outline">
+          <ion-label position="floating">Current Latitide</ion-label>
+          <ion-input formControlName="latitude" placeholder="Enter Location"></ion-input>
+        </ion-item>
+      </div>
+      <div class="mb-3">
+        <ion-item fill="outline">
+          <ion-label position="floating">Current Longitude</ion-label>
+          <ion-input formControlName="longitude" placeholder="Enter Location"></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="mb-3">
+        <ion-item fill="outline">
+          <ion-label position="floating">City</ion-label>
+          <ion-input [formControlName]="'city'" placeholder="Enter city"></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="mb-3">
+        <ion-item fill="outline">
+          <ion-label position="floating">Details</ion-label>
+          <ion-textarea formControlName="details" role="4" placeholder="Additional details"></ion-textarea>
+        </ion-item>
+      </div>
+
+
+    </form>
+    <capacitor-google-map id="map"></capacitor-google-map>
+  </ion-content>
+</ion-content>

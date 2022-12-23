@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button class="btn  btn-danger" (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-title class="text-center">ADD NEW CONTACT</ion-title>
+    <ion-buttons slot="end">
+      <ion-button class="btn btn-primary" (click)="confirm()" [strong]="true">create</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-content class="ion-padding">
+    <p>Create new contacts for the site</p>
+    <form [formGroup]="addContact">
+      <div class="mb-3">
+        <ion-item fill="outline">
+          <ion-label position="floating">First Name</ion-label>
+          <ion-input formControlName="FirstName" placeholder="Enter First Name"></ion-input>
+        </ion-item>
+      </div>
+      <div class="mb-3">
+
+        <ion-item fill="outline">
+          <ion-label position="floating">Last Name</ion-label>
+          <ion-input formControlName="LastName" placeholder="Enter Last Name"></ion-input>
+        </ion-item>
+      </div>
+      <div class="mb-3">
+        <ion-item fill="outline">
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email" formControlName="Email" placeholder="Enter Email"></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="mb-3">
+        <ion-item fill="outline">
+          <ion-label position="floating">Mobile</ion-label>
+          <ion-input formControlName="Mobile" placeholder="Enter Mobile No"></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="mb-3">
+        <ion-item fill="outline">
+          <ion-label position="floating">Role</ion-label>
+          <ion-input formControlName="Role" placeholder="Enter Role"></ion-input>
+        </ion-item>
+      </div>
+    </form>
+    <capacitor-google-map id="map"></capacitor-google-map>
+  </ion-content>
+</ion-content>

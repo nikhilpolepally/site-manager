@@ -1,0 +1,10 @@
+{
+  "name": "site-management",
+  "integrations": {
+    "capacitor": {
+      "enabled": false
+    },
+    "cordova": {}
+  },
+  "type": "angular"
+}
