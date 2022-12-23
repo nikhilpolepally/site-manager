@@ -8,7 +8,7 @@ import { ServicesService } from '../../services/services/services.service';
 import { SitesService } from 'src/app/services/sites/sites.service';
 import { Uid } from '@ionic-native/uid/ngx';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
-
+import { Device } from '@awesome-cordova-plugins/device/ngx';
 @Component({
   selector: 'app-add-locations',
   templateUrl: './add-locations.component.html',
@@ -28,14 +28,12 @@ export class AddLocationsComponent implements OnInit {
     private alertController: AlertController,
     private _siteService: SitesService,
     private androidPermissions: AndroidPermissions,
+    private device: Device,
     private uid: Uid,
 
     private fb: FormBuilder,) {
 
     this.getCurrentLocation();
-    this.uuid=this.uid.IMEI;
-    console.log(this.uid.IMEI)
-
   }
 
   ngOnInit() {
@@ -87,7 +85,7 @@ export class AddLocationsComponent implements OnInit {
       return;
     }
 
-    this._siteService.create(this.addLocationForm.value, this.uid.IMEI).subscribe({
+    this._siteService.create(this.addLocationForm.value, this.device.uuid).subscribe({
       next: async (response) => {
         if (response.Status == "success") {
           this.addLocationForm.reset();

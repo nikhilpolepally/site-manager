@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ModalController, RefresherCustomEvent } from '@ionic/angular';
 import { SitesService } from 'src/app/services/sites/sites.service';
 import { AddLocationsComponent } from '../add-locations/add-locations.component';
-
+import { Device } from '@awesome-cordova-plugins/device/ngx';
 @Component({
   selector: 'app-locations',
   templateUrl: './locations.component.html',
@@ -15,7 +15,8 @@ export class LocationsComponent implements OnInit {
   constructor(
     private _router: Router,
     private modalCtrl: ModalController,
-    private _siteServices: SitesService
+    private _siteServices: SitesService,
+    private device:Device
   ) { }
 
   ngOnInit() {
@@ -31,9 +32,8 @@ export class LocationsComponent implements OnInit {
   }
 
   loadLocations() {
-    this._siteServices.list("test").subscribe({
+    this._siteServices.list(this.device.uuid).subscribe({
       next: (response) => {
-        console.log(response)
         this.sites = response;
       }
     })

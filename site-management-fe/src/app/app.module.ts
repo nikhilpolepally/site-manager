@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ServicesService } from './services/services/services.service';
 import { CallNumber } from '@awesome-cordova-plugins/call-number/ngx';
 import { SMS } from '@awesome-cordova-plugins/sms/ngx';
+import { Device } from '@awesome-cordova-plugins/device/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
@@ -20,7 +22,8 @@ import { SMS } from '@awesome-cordova-plugins/sms/ngx';
     Uid,
     AndroidPermissions,
     CallNumber,
-    SMS
+    SMS,
+    Device
   ],
   bootstrap: [AppComponent],
 })

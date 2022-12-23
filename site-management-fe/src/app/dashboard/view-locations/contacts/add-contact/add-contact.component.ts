@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, ModalController } from '@ionic/angular';
 import { ContactsService } from 'src/app/services/contacts/contacts.service';
-
+import { Device } from '@awesome-cordova-plugins/device/ngx';
 @Component({
   selector: 'app-add-contact',
   templateUrl: './add-contact.component.html',
@@ -17,6 +17,7 @@ export class AddContactComponent implements OnInit {
     private _contactService: ContactsService,
     private _router: Router,
     private alertController:AlertController,
+    private device:Device,
     private fb: FormBuilder,) {
 
     const path = this._router.url.split('?')[0];
@@ -45,7 +46,7 @@ export class AddContactComponent implements OnInit {
     }
     console.log(this.addContact.value);
     console.log(this.token);
-    this._contactService.create(this.addContact.value, this.token, "test").subscribe({
+    this._contactService.create(this.addContact.value, this.token, this.device.uuid).subscribe({
       next: async (response) => {
         if (response.Status == "success") {
           this.addContact.reset();

@@ -8,6 +8,9 @@ import { AddContactComponent } from './contacts/add-contact/add-contact.componen
 import { CallNumber } from '@awesome-cordova-plugins/call-number/ngx';
 import { SMS } from '@awesome-cordova-plugins/sms/ngx';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+import { Device } from '@awesome-cordova-plugins/device/ngx';
+
+
 @Component({
   selector: 'app-view-locations',
   templateUrl: './view-locations.component.html',
@@ -26,6 +29,7 @@ export class ViewLocationsComponent implements OnInit {
     private sms: SMS,
     private callNumber: CallNumber,
     private androidPermissions: AndroidPermissions,
+    private device:Device
   ) {
     const path = this._router.url.split('?')[0];
     this.token = path.split('/').filter(x => x !== '')[2];
@@ -37,7 +41,7 @@ export class ViewLocationsComponent implements OnInit {
   }
 
   loadContacts() {
-    this._contactService.list(this.token, "test").subscribe({
+    this._contactService.list(this.token,this.device.uuid).subscribe({
       next: (response) => {
         this.contacts = response;
         console.log(response)
